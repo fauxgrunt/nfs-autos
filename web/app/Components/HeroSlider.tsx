@@ -87,7 +87,7 @@ const HeroSection = () => {
   }, []);
 
   return (
-    <div className="relative w-full h-[85vh] overflow-hidden bg-black">
+    <div className="relative w-full h-[90dvh] overflow-hidden bg-black">
       
       <Swiper
         modules={[Navigation, Pagination, Autoplay, EffectFade]}
@@ -120,9 +120,9 @@ const HeroSection = () => {
       >
         {slides.map((slide) => (
           <SwiperSlide key={slide.id}>
-            <div className="relative w-full h-full">
-              {/* Background Image with Enhanced Gradient Overlay */}
-              <div className="absolute inset-0 pointer-events-none">
+            <div className="relative w-full h-full flex flex-col">
+              {/* Background Image with Enhanced Gradient Overlay - Absolute Layer */}
+              <div className="absolute inset-0 z-0">
                 <img
                   src={slide.image}
                   alt={slide.title}
@@ -133,15 +133,15 @@ const HeroSection = () => {
                 <div className="absolute inset-0 bg-gradient-to-r from-black/60 via-black/30 to-black/60" />
               </div>
 
-              {/* Content Container */}
-              <div className="relative h-full flex flex-col justify-center w-full z-30">
+              {/* Main Content - Flex Grow Container */}
+              <div className="relative flex-grow flex flex-col justify-center z-10">
                 <div className={`container mx-auto px-4 md:px-6 lg:px-12 max-w-7xl w-full ${
                   slide.alignment === 'center' ? 'flex justify-center' : 
                   slide.alignment === 'right' ? 'flex justify-end' : ''
                 }`}>
                   
                   {/* Main Content Card */}
-                  <div className={`max-w-4xl space-y-6 w-full relative z-10 ${
+                  <div className={`max-w-4xl space-y-6 w-full ${
                     slide.alignment === 'center' ? 'text-center' : 
                     slide.alignment === 'right' ? 'text-right' : 'text-left'
                   }`}>
@@ -157,7 +157,7 @@ const HeroSection = () => {
                     </p>
 
                     {/* CTAs */}
-                    <div className={`flex flex-wrap gap-3 md:gap-4 pt-4 pb-6 md:pb-0 relative z-30 ${
+                    <div className={`flex flex-wrap gap-3 md:gap-4 pt-4 ${
                       slide.alignment === 'center' ? 'justify-center' : 
                       slide.alignment === 'right' ? 'justify-end' : 'justify-start'
                     }`}>
@@ -184,13 +184,14 @@ const HeroSection = () => {
                     </div>
                   </div>
                 </div>
+              </div>
 
-                {/* STATS BAR */}
-                <div className="absolute bottom-0 left-0 right-0 backdrop-blur-xl bg-black/40 border-t border-white/10 pointer-events-auto">
-                  <div className="overflow-x-auto scrollbar-hide w-full">
-                    <div className="px-4 md:px-6 lg:px-12 py-4 md:py-6 mx-auto max-w-7xl">
-                      <div className="flex items-center justify-start gap-6 md:gap-8 lg:gap-12 min-w-max">
-                        <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
+              {/* STATS BAR - Relative Position at Bottom */}
+              <div className="relative z-20 w-full backdrop-blur-xl bg-black/40 border-t border-white/10">
+                <div className="overflow-x-auto scrollbar-hide w-full">
+                  <div className="px-4 md:px-6 lg:px-12 py-4 md:py-6 mx-auto max-w-7xl">
+                    <div className="flex items-center justify-start gap-6 md:gap-8 lg:gap-12 min-w-max">
+                      <div className="flex items-center gap-2 md:gap-3 flex-shrink-0">
                         <div className="text-3xl md:text-4xl font-black text-white" style={{ fontFamily: 'var(--font-chakra-petch), sans-serif' }}>50+</div>
                         <div className="text-[9px] md:text-xs text-white/70 uppercase tracking-wide leading-tight whitespace-nowrap" style={{ fontFamily: 'Raleway, sans-serif' }}>
                           PREMIUM<br/>CARS
@@ -215,7 +216,6 @@ const HeroSection = () => {
                         </div>
                       </div>
                     </div>
-                  </div>
                   </div>
                 </div>
               </div>
@@ -244,10 +244,10 @@ const HeroSection = () => {
       </button>
 
       {/* Custom Pagination Dots */}
-      <div className="hero-pagination absolute bottom-24 md:bottom-28 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20 pointer-events-auto"></div>
+      <div className="hero-pagination absolute bottom-28 md:bottom-32 left-1/2 -translate-x-1/2 flex items-center gap-3 z-20 pointer-events-auto"></div>
 
       {/* Scroll Indicator */}
-      <div className="absolute bottom-24 md:bottom-28 right-8 hidden lg:flex flex-col items-center gap-2 animate-bounce z-20">
+      <div className="absolute bottom-28 md:bottom-32 right-8 hidden lg:flex flex-col items-center gap-2 animate-bounce z-20">
         <span className="text-xs text-white/60 uppercase tracking-widest rotate-90 origin-center mb-8">
           Scroll
         </span>
